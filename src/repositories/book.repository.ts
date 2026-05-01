@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/prisma";
 
 export interface BookData {
-    id: string;
     title: string;
     author: string;
     publishedYear: string;
@@ -20,5 +19,8 @@ export class BookRepository {
 
     async put( id: string, data: BookData ) {
         return prisma.book.update({ where: { id }, data });
+    }   
+    async delete( id: string ) {
+        return prisma.book.delete({ where: { id } });
     }   
 }
